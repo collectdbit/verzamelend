@@ -1,9 +1,9 @@
 """
-.. module:: company.package.config
+.. module:: vermazelend.config
     :platform: Unix
-    :synopsis: Configuration utilities.
+    :synopsis: Vermazelend configuration utilities.
 
-.. moduleauthor:: Your Name <email address>
+.. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
 
 from __future__ import absolute_import
@@ -18,7 +18,7 @@ except ImportError:
 import logging
 
 
-DEFAULT_CONFIG_FILE = '/etc/package/package.cfg'
+DEFAULT_CONFIG_FILE = '/etc/vermazelend/vermazelend.cfg'
 
 SETTINGS = None
 

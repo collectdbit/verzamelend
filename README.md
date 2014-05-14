@@ -1,9 +1,9 @@
-python-primogen
-===============
+vermazelend
+===========
 
-[![Build Status](https://travis-ci.org/steenzout/python-primogen.svg?branch=master)](https://travis-ci.org/steenzout/python-primogen)
-[![Code Health](https://landscape.io/github/steenzout/python-primogen/master/landscape.png)](https://landscape.io/github/steenzout/python-primogen/master)
-[![Requirements Status](https://requires.io/github/steenzout/python-primogen/requirements.png?branch=master)](https://requires.io/github/steenzout/python-primogen/requirements/?branch=master)
+[![Build Status](https://travis-ci.org/steenzout/vermazelend.svg?branch=master)](https://travis-ci.org/steenzout/vermazelend)
+[![Code Health](https://landscape.io/github/steenzout/vermazelend/master/landscape.png)](https://landscape.io/github/steenzout/vermazelend/master)
+[![Requirements Status](https://requires.io/github/steenzout/vermazelend/requirements.png?branch=master)](https://requires.io/github/steenzout/vermazelend/requirements/?branch=master)
 
 This repository's goal is to be a starting point for Python projects.
 
@@ -15,7 +15,7 @@ It uses:
 - [Sphinx](http://sphinx-doc.org) for documentation
 
 
-company
+vermazelend
 -------
 
 This is the directory which will hold your files.

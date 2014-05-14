@@ -10,6 +10,6 @@ class ATestCase(tests.BaseTestCase):
         self.assertTrue(self.configuration is not None)
 
     def test_configuration_contents(self):
-        self.assertTrue('company.package' in self.configuration)
-        self.assertTrue('key' in self.configuration['company.package'])
-        self.assertEquals(self.configuration['company.package']['key'], 'value')
+        self.assertTrue('vermazelend' in self.configuration)
+        self.assertTrue('key' in self.configuration['vermazelend'])
+        self.assertEquals(self.configuration['vermazelend']['key'], 'value')

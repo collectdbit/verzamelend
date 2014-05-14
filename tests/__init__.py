@@ -1,15 +1,15 @@
 """
-.. module:: company.package.tests
+.. module:: vermazelend.tests
     :platform: Unix
     :synopsis:
 
-.. moduleauthor:: Your Name <email address>
+.. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
 
 import os
 
-import company.package.config
-import company.package.logging
+import vermazelend.config
+import vermazelend.logging
 
 import logging
 
@@ -32,10 +32,10 @@ class Basic(object):
         """
         logging.getLogger('%s.%s' % (__name__, 'Basic')).info('setup_configuration()')
 
-        company.package.config.reset()
-        company.package.config.load_configuration(PACKAGE_CONFIG_FILE)
+        vermazelend.config.reset()
+        vermazelend.config.load_configuration(PACKAGE_CONFIG_FILE)
 
-        self.configuration = company.package.config.get()
+        self.configuration = vermazelend.config.get()
 
     def setup_logger(self):
         """
@@ -44,7 +44,7 @@ class Basic(object):
         """
         logging.getLogger('%s.%s' % (__name__, 'Basic')).info('setup_logger()')
 
-        company.package.logging.load_configuration(LOGGING_CONFIG_FILE)
+        vermazelend.logging.load_configuration(LOGGING_CONFIG_FILE)
 
         self.logger = logging.getLogger('%s.%s' % (__name__, self.__class__.__name__))
 

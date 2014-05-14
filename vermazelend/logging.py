@@ -1,9 +1,9 @@
 """
-.. module:: company.package.logging
+.. module:: vermazelend.logging
     :platform: Unix
-    :synopsis: Logging utilities.
+    :synopsis: Vermazelend logging utilities.
 
-.. moduleauthor:: Your Name <email address>
+.. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
 
 from __future__ import absolute_import
@@ -15,7 +15,7 @@ import logging.config as config
 import os
 
 
-DEFAULT_CONFIG_FILE = '/etc/package/logging.conf'
+DEFAULT_CONFIG_FILE = '/etc/vermazelend/logging.conf'
 
 
 def load_configuration(config_file=DEFAULT_CONFIG_FILE):
