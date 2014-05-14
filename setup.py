@@ -6,9 +6,9 @@ from pip.req import parse_requirements
 from setuptools import find_packages, setup
 
 exec(open('vermazelend/version.py').read())
-setup(name='primogen',
+setup(name='vermazelend',
       version=__version__,
-      description='Python basic package.',
+      description='Python Vermazelend package.',
       author='Pedro Salgado',
       author_email='steenzout@ymail.com',
       maintainer='Pedro Salgado',
