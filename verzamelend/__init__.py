@@ -128,12 +128,12 @@ class Configuration(object):
         """
         if parameter is None:
             error_message = 'getValue() parameter argument is None!'
-            Configuration.__logger.error(error_message)
+            Configuration.LOGGER.error(error_message)
             raise ValueError(error_message)
 
         if position is None or position <= 0:
             error_message = 'getValue() position argument %s must be a positive integer!'
-            Configuration.__logger.error(error_message, position)
+            Configuration.LOGGER.error(error_message, position)
             raise ValueError(error_message % position)
 
         if position is None:
@@ -168,7 +168,7 @@ class Plugin(object):
         :param config: the Collectd configuration for this plugin.
         :type config: object (Config)
         """
-        __logger.info('configCallback()')
+        Plugin.LOGGER.info('configCallback()')
         configuration = Configuration(config)
 
     @staticmethod
@@ -176,14 +176,14 @@ class Plugin(object):
         """
         Plugin callback for the init event.
         """
-        __logger.info('initCallback()')
+        Plugin.LOGGER.info('initCallback()')
 
     @staticmethod
     def flushCallback():
         """
         Plugin callback for flush events.
         """
-        __logger.info('flushCallback()')
+        Plugin.LOGGER.info('flushCallback()')
 
     @staticmethod
     def logCallback(level, message):
@@ -194,7 +194,7 @@ class Plugin(object):
         :param message: the message to be sent to the log.
         :type message: str
         """
-        __logger.info('logCallback()')
+        Plugin.LOGGER.info('logCallback()')
 
     @staticmethod
     def notificationCallback(notification):
@@ -204,27 +204,27 @@ class Plugin(object):
         :param notification: the Collectd notification.
         :type notification: object (Notification)
         """
-        __logger.info('notificationCallback()')
+        Plugin.LOGGER.info('notificationCallback()')
 
     @staticmethod
     def readCallback(data=None):
         """
         Plugin callback for read events.
         """
-        __logger.info('readCallback()')
+        Plugin.LOGGER.info('readCallback()')
 
     @staticmethod
     def shutdownCallback():
         """
         Plugin callback for the shutdown event.
         """
-        __logger.info('shutdownCallback()')
+        Plugin.LOGGER.info('shutdownCallback()')
 
     @staticmethod
     def writeCallback(measurements, data=None):
         """
         Plugin callback for write events.
         """
-        __logger.info('writeCallback()')
+        Plugin.LOGGER.info('writeCallback()')
 
 Plugin.LOGGER = logging.getLogger('%s.%s' % (Plugin.__module__, Plugin.__name__))
