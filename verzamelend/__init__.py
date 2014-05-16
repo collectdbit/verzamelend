@@ -166,7 +166,6 @@ class Plugin:
         """
         self.name = name
 
-
     @staticmethod
     def configCallback(config):
         """
