@@ -141,7 +141,7 @@ class Configuration:
         else:
             return self.values[parameter]
 
-Configuration.LOGGER = logging.getLogger('%s.%s' % Configuration.__module__, Configuration.__name__)
+Configuration.LOGGER = logging.getLogger('%s.%s' % (Configuration.__module__, Configuration.__name__))
 
 
 class Plugin:
@@ -227,4 +227,4 @@ class Plugin:
         """
         __logger.info('writeCallback()')
 
-Plugin.LOGGER = logging.getLogger('%s.%s' % Plugin.__module__, Plugin.__name__)
+Plugin.LOGGER = logging.getLogger('%s.%s' % (Plugin.__module__, Plugin.__name__))
