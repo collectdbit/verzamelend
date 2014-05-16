@@ -45,7 +45,7 @@ def register_callbacks(plugin):
         LOGGER.error(error_message)
         raise ValueError(error_message)
 
-    LOGGER.info('register_callbacks for plugin %s' % plugin.name)
+    LOGGER.info('register_callbacks for plugin %s', plugin.name)
     collectd.register_config(plugin.configCallback)
     collectd.register_flush(plugin.flushCallback())
     collectd.register_init(plugin.initCallback())
