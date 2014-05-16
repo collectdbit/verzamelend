@@ -5,6 +5,7 @@ env:
 - TOXENV=py27
 install:
 - pip install tox --use-mirrors
+- pip install coveralls
 - pip install -r requirements.txt --use-mirrors
 - pip install -r test-requirements.txt --use-mirrors
 before_script:
@@ -13,6 +14,8 @@ script:
 - tox
 after_script:
 - rm -rf log
+after_success:
+- coveralls
 branches:
   only:
     - master
