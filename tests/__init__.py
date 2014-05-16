@@ -1,5 +1,5 @@
 """
-.. module:: vermazelend.tests
+.. module:: verzamelend.tests
     :platform: Unix
     :synopsis:
 
@@ -8,8 +8,8 @@
 
 import os
 
-import vermazelend.config
-import vermazelend.logging
+import verzamelend.config
+import verzamelend.logging
 
 import logging
 
@@ -32,10 +32,10 @@ class Basic(object):
         """
         logging.getLogger('%s.%s' % (__name__, 'Basic')).info('setup_configuration()')
 
-        vermazelend.config.reset()
-        vermazelend.config.load_configuration(PACKAGE_CONFIG_FILE)
+        verzamelend.config.reset()
+        verzamelend.config.load_configuration(PACKAGE_CONFIG_FILE)
 
-        self.configuration = vermazelend.config.get()
+        self.configuration = verzamelend.config.get()
 
     def setup_logger(self):
         """
@@ -44,7 +44,7 @@ class Basic(object):
         """
         logging.getLogger('%s.%s' % (__name__, 'Basic')).info('setup_logger()')
 
-        vermazelend.logging.load_configuration(LOGGING_CONFIG_FILE)
+        verzamelend.logging.load_configuration(LOGGING_CONFIG_FILE)
 
         self.logger = logging.getLogger('%s.%s' % (__name__, self.__class__.__name__))
 
