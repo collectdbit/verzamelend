@@ -17,7 +17,7 @@ import unittest
 
 
 LOGGING_CONFIG_FILE = '%s/tests/logging.conf' % os.curdir
-PACKAGE_CONFIG_FILE = '%s/tests/package.cfg' % os.curdir
+PACKAGE_CONFIG_FILE = '%s/tests/verzamelend.cfg' % os.curdir
 
 
 class Basic(object):
