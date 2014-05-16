@@ -1,4 +1,4 @@
-import vermazelend.logging
+import verzamelend.logging
 
 import mock
 
@@ -7,27 +7,27 @@ import pytest
 import unittest
 
 
-from vermazelend.logging import DEFAULT_CONFIG_FILE
+from verzamelend.logging import DEFAULT_CONFIG_FILE
 
 
 class LoadConfigurationTestCase(unittest.TestCase):
     """
-    Tests for the vermazelend.logging.load_configuration() function.
+    Tests for the verzamelend.logging.load_configuration() function.
     """
 
     def setUp(self):
         # mock of logging.RootLogger
-        self.patch_get_logger = mock.patch('vermazelend.logging.logging.getLogger', autospec=True)
+        self.patch_get_logger = mock.patch('verzamelend.logging.logging.getLogger', autospec=True)
         self.mock_get_logger = self.patch_get_logger.start()
 
-        self.patch_root_logger = mock.patch('vermazelend.logging.logging.RootLogger', autospec=True)
+        self.patch_root_logger = mock.patch('verzamelend.logging.logging.RootLogger', autospec=True)
         self.mock_root_logger = self.patch_root_logger.start()
         self.mock_get_logger.return_value = self.mock_root_logger
 
         self.patch_path_exists = mock.patch('os.path', autospec=True)
         self.mock_path = self.patch_path_exists.start()
 
-        self.patch_fileConfig = mock.patch('vermazelend.logging.config.fileConfig', autospec=True)
+        self.patch_fileConfig = mock.patch('verzamelend.logging.config.fileConfig', autospec=True)
         self.mock_fileConfig = self.patch_fileConfig.start()
 
     def tearDown(self):
@@ -38,13 +38,13 @@ class LoadConfigurationTestCase(unittest.TestCase):
 
     def test(self):
         """
-        Test vermazelend.logging.load_configuration().
+        Test verzamelend.logging.load_configuration().
         """
         self.mock_path.exists.return_value = True
         self.mock_path.isfile.return_value = True
         self.mock_fileConfig.return_value = None
 
-        vermazelend.logging.load_configuration()
+        verzamelend.logging.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -55,13 +55,13 @@ class LoadConfigurationTestCase(unittest.TestCase):
 
     def test_nofile(self):
         """
-        Test vermazelend.logging.load_configuration() when the configuration file doesn't exist.
+        Test verzamelend.logging.load_configuration() when the configuration file doesn't exist.
         """
         self.mock_path.exists.return_value = True
         self.mock_path.isfile.return_value = False
 
         with pytest.raises(ValueError):
-            vermazelend.logging.load_configuration()
+            verzamelend.logging.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -73,14 +73,14 @@ class LoadConfigurationTestCase(unittest.TestCase):
 
     def test_errors(self):
         """
-        Test vermazelend.logging.load_configuration() when errors are raised.
+        Test verzamelend.logging.load_configuration() when errors are raised.
         """
         self.mock_path.exists.return_value = True
         self.mock_path.isfile.return_value = True
         self.mock_fileConfig.side_effect = ValueError('fake error')
 
         with pytest.raises(ValueError):
-            vermazelend.logging.load_configuration()
+            verzamelend.logging.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
