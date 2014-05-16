@@ -56,7 +56,7 @@ def register_callbacks(plugin):
     collectd.register_write(plugin.writeCallback())
 
 
-class Configuration:
+class Configuration(object):
     """
     Class to hold Collectd plugin configuration.
     """
@@ -144,7 +144,7 @@ class Configuration:
 Configuration.LOGGER = logging.getLogger('%s.%s' % (Configuration.__module__, Configuration.__name__))
 
 
-class Plugin:
+class Plugin(object):
     """
     Class to build Collectd plugins.
     """
