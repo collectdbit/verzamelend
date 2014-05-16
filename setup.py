@@ -16,4 +16,4 @@ setup(name='verzamelend',
       url='https://github.com/steenzout/verzamelend',
       packages=find_packages(exclude=('*.tests', '*.tests.*', 'tests.*', 'tests')),
       install_requires=[str(pkg.req) for pkg in parse_requirements('requirements.txt')],
-      tests_requires=[str(pkg.req) for pkg in parse_requirements('test-requirements.txt')],)
+      tests_require=[str(pkg.req) for pkg in parse_requirements('test-requirements.txt')],)
