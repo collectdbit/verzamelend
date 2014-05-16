@@ -6,29 +6,17 @@
 .. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
 
-from __future__ import absolute_import
-
-
 import collectd
-
 
 import logging
 
 
-from verzamelend import config as vrz_config
-from verzamelend import logging as vrz_logging
-
+LOGGER = logging.getLogger(__name__)
 
 TYPE_ABSOLUTE = 'absolute'
 TYPE_COUNTER = 'counter'
 TYPE_DERIVE = 'derive'
 TYPE_GAUGE = 'gauge'
-
-vrz_logging.load_configuration()
-vrz_config.load_configuration()
-
-
-LOGGER = logging.getLogger(__name__)
 
 
 def register_callbacks(plugin):
