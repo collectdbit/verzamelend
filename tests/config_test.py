@@ -1,4 +1,4 @@
-import vermazelend.config
+import verzamelend.config
 
 import mock
 
@@ -7,27 +7,27 @@ import pytest
 import unittest
 
 
-from vermazelend.config import DEFAULT_CONFIG_FILE
+from verzamelend.config import DEFAULT_CONFIG_FILE
 
 
 class LoadConfigurationTestCase(unittest.TestCase):
     """
-    Tests for the vermazelend.config.load_configuration() function.
+    Tests for the verzamelend.config.load_configuration() function.
     """
 
     def setUp(self):
         # mock of logging.RootLogger
-        self.patch_get_logger = mock.patch('vermazelend.config.logging.getLogger', autospec=True)
+        self.patch_get_logger = mock.patch('verzamelend.config.logging.getLogger', autospec=True)
         self.mock_get_logger = self.patch_get_logger.start()
 
-        self.patch_root_logger = mock.patch('vermazelend.config.logging.RootLogger', autospec=True)
+        self.patch_root_logger = mock.patch('verzamelend.config.logging.RootLogger', autospec=True)
         self.mock_root_logger = self.patch_root_logger.start()
         self.mock_get_logger.return_value = self.mock_root_logger
 
         self.patch_path_exists = mock.patch('os.path', autospec=True)
         self.mock_path = self.patch_path_exists.start()
 
-        self.patch_config_read = mock.patch('vermazelend.config.ConfigParser.read')
+        self.patch_config_read = mock.patch('verzamelend.config.ConfigParser.read')
         self.mock_read = self.patch_config_read.start()
 
     def tearDown(self):
@@ -38,13 +38,13 @@ class LoadConfigurationTestCase(unittest.TestCase):
 
     def test(self):
         """
-        Test vermazelend.config.load_configuration() when configuration file exists.
+        Test verzamelend.config.load_configuration() when configuration file exists.
         """
         self.mock_path.exists.return_value = True
         self.mock_path.isfile.return_value = True
         self.mock_read.return_value = None
 
-        vermazelend.config.load_configuration()
+        verzamelend.config.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -56,14 +56,14 @@ class LoadConfigurationTestCase(unittest.TestCase):
 
     def test_nofile(self):
         """
-        Test vermazelend.config.load_configuration() when the configuration file doesn't exist.
+        Test verzamelend.config.load_configuration() when the configuration file doesn't exist.
         """
         self.mock_path.exists.return_value = True
         self.mock_path.isfile.return_value = False
         self.mock_read.return_value = None
 
         with pytest.raises(ValueError):
-            vermazelend.config.load_configuration()
+            verzamelend.config.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -76,14 +76,14 @@ class LoadConfigurationTestCase(unittest.TestCase):
 
     def test_errors(self):
         """
-        Test vermazelend.config.load_configuration() when errors are raised.
+        Test verzamelend.config.load_configuration() when errors are raised.
         """
         self.mock_path.exists.return_value = True
         self.mock_path.isfile.return_value = True
         self.mock_read.side_effect = ValueError(123)
 
         with pytest.raises(ValueError):
-            vermazelend.config.load_configuration()
+            verzamelend.config.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -99,44 +99,44 @@ class LoadConfigurationTestCase(unittest.TestCase):
 
 class GetTestCase(unittest.TestCase):
     """
-    Tests for the vermazelend.config.get() function.
+    Tests for the verzamelend.config.get() function.
     """
 
-    @mock.patch('vermazelend.config.load_configuration', autospec=True)
+    @mock.patch('verzamelend.config.load_configuration', autospec=True)
     def test(self, mock_load):
         """
-        Tests vermazelend.config.get() when no settings have been loaded.
+        Tests verzamelend.config.get() when no settings have been loaded.
         """
         default = {'key1': 'value1'}
         mock_load.return_value = default
 
-        self.assertEquals(default, vermazelend.config.get())
+        self.assertEquals(default, verzamelend.config.get())
         mock_load.assert_called_once_with()
 
-    @mock.patch('vermazelend.config.load_configuration', autospec=True)
+    @mock.patch('verzamelend.config.load_configuration', autospec=True)
     def test_with_preloaded_settings(self, mock_load):
         """
-        Tests vermazelend.config.get() when settings have been loaded.
+        Tests verzamelend.config.get() when settings have been loaded.
         """
         default = {'key2': 'value2'}
-        vermazelend.config.SETTINGS = default
+        verzamelend.config.SETTINGS = default
 
-        self.assertEquals(default, vermazelend.config.get())
+        self.assertEquals(default, verzamelend.config.get())
         self.assertFalse(mock_load.called)
 
 
 class ResetTestCase(unittest.TestCase):
     """
-    Tests for the vermazelend.config.reset() function.
+    Tests for the verzamelend.config.reset() function.
     """
 
     def test(self):
         """
-        Tests vermazelend.config.reset().
+        Tests verzamelend.config.reset().
         """
         default = {'key2': 'value2'}
-        vermazelend.config.SETTINGS = default
+        verzamelend.config.SETTINGS = default
 
-        self.assertEquals(default, vermazelend.config.get())
-        self.assertTrue(vermazelend.config.reset() is None)
-        self.assertTrue(vermazelend.config.SETTINGS is None)
+        self.assertEquals(default, verzamelend.config.get())
+        self.assertTrue(verzamelend.config.reset() is None)
+        self.assertTrue(verzamelend.config.SETTINGS is None)
