@@ -3,6 +3,7 @@ verzamelend
 
 [![Build Status](https://travis-ci.org/steenzout/verzamelend.svg?branch=master)](https://travis-ci.org/steenzout/verzamelend)
 [![Code Health](https://landscape.io/github/steenzout/verzamelend/master/landscape.png)](https://landscape.io/github/steenzout/verzamelend/master)
+[![Coverage Status](https://coveralls.io/repos/steenzout/verzamelend/badge.png?branch=master)](https://coveralls.io/r/steenzout/verzamelend?branch=master)
 [![Requirements Status](https://requires.io/github/steenzout/verzamelend/requirements.png?branch=master)](https://requires.io/github/steenzout/verzamelend/requirements/?branch=master)
 
 This repository's goal is to be a starting point for Python projects.
