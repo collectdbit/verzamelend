@@ -1,9 +1,9 @@
-vermazelend
+verzamelend
 ===========
 
-[![Build Status](https://travis-ci.org/steenzout/vermazelend.svg?branch=master)](https://travis-ci.org/steenzout/vermazelend)
-[![Code Health](https://landscape.io/github/steenzout/vermazelend/master/landscape.png)](https://landscape.io/github/steenzout/vermazelend/master)
-[![Requirements Status](https://requires.io/github/steenzout/vermazelend/requirements.png?branch=master)](https://requires.io/github/steenzout/vermazelend/requirements/?branch=master)
+[![Build Status](https://travis-ci.org/steenzout/verzamelend.svg?branch=master)](https://travis-ci.org/steenzout/verzamelend)
+[![Code Health](https://landscape.io/github/steenzout/verzamelend/master/landscape.png)](https://landscape.io/github/steenzout/verzamelend/master)
+[![Requirements Status](https://requires.io/github/steenzout/verzamelend/requirements.png?branch=master)](https://requires.io/github/steenzout/verzamelend/requirements/?branch=master)
 
 This repository's goal is to be a starting point for Python projects.
 
@@ -15,8 +15,8 @@ It uses:
 - [Sphinx](http://sphinx-doc.org) for documentation
 
 
-vermazelend
--------
+verzamelend
+-----------
 
 This is the directory which will hold your files.
 
