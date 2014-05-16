@@ -6,6 +6,10 @@
 .. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
 
+
+from __future__ import absolute_import
+
+
 import collectd
 
 import logging
@@ -57,7 +61,7 @@ class Configuration:
     Class to hold Collectd plugin configuration.
     """
 
-    LOGGER = logging.getLogger('%s.%s' % Configuration.__module__, Configuration.__name__)
+    LOGGER = None
 
     def __init__(self, config):
         """
@@ -137,13 +141,15 @@ class Configuration:
         else:
             return self.values[parameter]
 
+Configuration.LOGGER = logging.getLogger('%s.%s' % Configuration.__module__, Configuration.__name__)
+
 
 class Plugin:
     """
     Class to build Collectd plugins.
     """
 
-    LOGGER = logging.getLogger('%s.%s' % Plugin.__module__, Plugin.__name__)
+    LOGGER = None
 
     def __init__(self, name):
         """
@@ -220,3 +226,5 @@ class Plugin:
         Plugin callback for write events.
         """
         __logger.info('writeCallback()')
+
+Plugin.LOGGER = logging.getLogger('%s.%s' % Plugin.__module__, Plugin.__name__)
