@@ -28,7 +28,7 @@ vrz_logging.load_configuration()
 vrz_config.load_configuration()
 
 
-__logger = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
 
 def register_callbacks(plugin):
@@ -50,10 +50,10 @@ def register_callbacks(plugin):
     """
     if plugin is None:
         error_message = 'register_callbacks() plugin argument is None!'
-        __logger.error(error_message)
+        LOGGER.error(error_message)
         raise ValueError(error_message)
 
-    __logger.info('register_callbacks for plugin %s' % plugin.name)
+    LOGGER.info('register_callbacks for plugin %s' % plugin.name)
     collectd.register_config(plugin.configCallback)
     collectd.register_flush(plugin.flushCallback())
     collectd.register_init(plugin.initCallback())
@@ -69,7 +69,7 @@ class Configuration:
     Class to hold Collectd plugin configuration.
     """
 
-    __logger = logging.getLogger('%s.%s' % Configuration.__module__, Configuration.__name__)
+    LOGGER = logging.getLogger('%s.%s' % Configuration.__module__, Configuration.__name__)
 
     def __init__(self, config):
         """
@@ -155,7 +155,7 @@ class Plugin:
     Class to build Collectd plugins.
     """
 
-    __logger = logging.getLogger('%s.%s' % Plugin.__module__, Plugin.__name__)
+    LOGGER = logging.getLogger('%s.%s' % Plugin.__module__, Plugin.__name__)
 
     def __init__(self, name):
         """
