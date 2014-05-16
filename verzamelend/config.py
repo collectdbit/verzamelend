@@ -1,7 +1,7 @@
 """
-.. module:: vermazelend.config
+.. module:: verzamelend.config
     :platform: Unix
-    :synopsis: Vermazelend configuration utilities.
+    :synopsis: Verzamelend configuration utilities.
 
 .. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """

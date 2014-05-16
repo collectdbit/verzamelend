@@ -1,7 +1,7 @@
 """
-.. module:: vermazelend.version
+.. module:: verzamelend.version
     :platform: Unix
-    :synopsis: Version module.
+    :synopsis: Verzamelend version module.
 
 .. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """

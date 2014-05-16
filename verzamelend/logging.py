@@ -1,7 +1,7 @@
 """
-.. module:: vermazelend.logging
+.. module:: verzamelend.logging
     :platform: Unix
-    :synopsis: Vermazelend logging utilities.
+    :synopsis: Verzamelend logging utilities.
 
 .. moduleauthor:: Pedro Salgado <steenzout@ymail.com>
 """
