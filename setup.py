@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import pkg_resources
+import verzamelend
 
 
 from pip.req import parse_requirements
@@ -9,8 +9,8 @@ from pip.req import parse_requirements
 from setuptools import find_packages, setup
 
 
-setup(name='verzamelend',
-      version=pkg_resources.get_distribution('verzamelend').version,
+setup(name=verzamelend.__name__,
+      version=verzamelend.__version__,
       description='Python verzamelend package.',
       author='Pedro Salgado',
       author_email='steenzout@ymail.com',

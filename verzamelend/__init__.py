@@ -14,6 +14,8 @@ import collectd
 
 import logging
 
+from verzamelend.version import __version__
+
 
 LOGGER = logging.getLogger(__name__)
 
