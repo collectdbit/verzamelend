@@ -6,9 +6,6 @@ verzamelend
 [![Coverage Status](https://coveralls.io/repos/steenzout/verzamelend/badge.png?branch=master)](https://coveralls.io/r/steenzout/verzamelend?branch=master)
 [![Requirements Status](https://requires.io/github/steenzout/verzamelend/requirements.png?branch=master)](https://requires.io/github/steenzout/verzamelend/requirements/?branch=master)
 
-This repository's goal is to be a starting point for Python projects.
-
-It uses:
 
 - [git](http://git-scm.com) for version control
 - [pip](http://www.pip-installer.org/en/latest/) to manage Python packages
