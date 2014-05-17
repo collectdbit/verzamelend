@@ -7,7 +7,7 @@ import pytest
 import unittest
 
 
-from verzamelend.config import DEFAULT_CONFIG_FILE
+from verzamelend.config import DEFAULT_CONFIG_FILE, Cache
 
 
 class LoadConfigurationTestCase(unittest.TestCase):
@@ -119,7 +119,7 @@ class GetTestCase(unittest.TestCase):
         Tests verzamelend.config.get() when settings have been loaded.
         """
         default = {'key2': 'value2'}
-        verzamelend.config.SETTINGS = default
+        Cache.SETTINGS = default
 
         self.assertEquals(default, verzamelend.config.get())
         self.assertFalse(mock_load.called)
@@ -139,4 +139,4 @@ class ResetTestCase(unittest.TestCase):
 
         self.assertEquals(default, verzamelend.config.get())
         self.assertTrue(verzamelend.config.reset() is None)
-        self.assertTrue(verzamelend.config.SETTINGS is None)
+        self.assertTrue(Cache.SETTINGS is None)
