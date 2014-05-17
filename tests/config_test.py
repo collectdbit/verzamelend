@@ -143,7 +143,7 @@ class ResetTestCase(unittest.TestCase):
         Tests verzamelend.config.reset().
         """
         default = {'key2': 'value2'}
-        verzamelend.config.SETTINGS = default
+        Cache.SETTINGS = default
 
         self.assertEquals(default, verzamelend.config.get())
         self.assertTrue(verzamelend.config.reset() is None)
