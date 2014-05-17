@@ -40,11 +40,10 @@ def load_configuration(config_file=DEFAULT_CONFIG_FILE):
     parser = ConfigParser()
     try:
         parser.read(config_file)
-        settings = {}
+        Cache.SETTINGS = {}
         for section in parser.sections():
-            settings[section] = dict(parser.items(section))
+            Cache.SETTINGS[section] = dict(parser.items(section))
         logging.getLogger(__name__).info('%s configuration file was loaded.', config_file)
-        Cache.SETTINGS = settings
         return Cache.SETTINGS
     except StandardError as error:
         Cache.SETTINGS = None
