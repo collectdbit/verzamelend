@@ -16,6 +16,8 @@ class LoadConfigurationTestCase(unittest.TestCase):
     """
 
     def setUp(self):
+        verzamelend.config.reset()
+
         # mock of logging.RootLogger
         self.patch_get_logger = mock.patch('verzamelend.config.logging.getLogger', autospec=True)
         self.mock_get_logger = self.patch_get_logger.start()
@@ -102,6 +104,9 @@ class GetTestCase(unittest.TestCase):
     Tests for the verzamelend.config.get() function.
     """
 
+    def setUp(self):
+        verzamelend.config.reset()
+
     @mock.patch('verzamelend.config.load_configuration', autospec=True)
     def test(self, mock_load):
         """
@@ -129,6 +134,9 @@ class ResetTestCase(unittest.TestCase):
     """
     Tests for the verzamelend.config.reset() function.
     """
+
+    def setUp(self):
+        verzamelend.config.reset()
 
     def test(self):
         """
