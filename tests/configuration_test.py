@@ -43,3 +43,16 @@ class GetIntTestCase(tests.BaseTestCase):
         Config = verzamelend.Configuration(self.config)
         self.assertEquals(Config.getInt('key1'), 1)
         self.assertEquals(Config.getInt('key2'), 2)
+
+
+class GetStrTestCase(tests.BaseTestCase):
+
+    def setUp(self):
+        self.item1 = ConfigurationItem('key1', 1)
+        self.item2 = ConfigurationItem('key2', '2')
+        self.config = MockConfig([self.item1, self.item2])
+
+    def test(self):
+        Config = verzamelend.Configuration(self.config)
+        self.assertEquals(Config.getStr('key1'), '1')
+        self.assertEquals(Config.getStr('key2'), '2')
