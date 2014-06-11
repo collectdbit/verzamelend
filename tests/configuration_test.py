@@ -1,3 +1,5 @@
+import pytest
+
 import tests
 
 import verzamelend
@@ -18,41 +20,53 @@ class MockConfig(object):
 class GetBoolTestCase(tests.BaseTestCase):
 
     def setUp(self):
-        self.item1 = ConfigurationItem('key1', True)
-        self.item2 = ConfigurationItem('key2', False)
-        self.item3 = ConfigurationItem('key3', 'true')
-        self.item4 = ConfigurationItem('key4', 'false')
-        self.config = MockConfig([self.item1, self.item2, self.item3, self.item4])
+        item1 = ConfigurationItem('key1', True)
+        item2 = ConfigurationItem('key2', False)
+        item3 = ConfigurationItem('key3', 'true')
+        item4 = ConfigurationItem('key4', 'false')
+        mock_config = MockConfig([item1, item2, item3, item4])
+        self.config = verzamelend.Configuration(mock_config)
 
     def test(self):
-        Config = verzamelend.Configuration(self.config)
-        self.assertTrue(Config.getBool('key1'))
-        self.assertFalse(Config.getBool('key2'))
-        self.assertTrue(Config.getBool('key3'))
-        self.assertFalse(Config.getBool('key4'))
+        self.assertTrue(self.config.getBool('key1'))
+        self.assertFalse(self.config.getBool('key2'))
+        self.assertTrue(self.config.getBool('key3'))
+        self.assertFalse(self.config.getBool('key4'))
 
 
 class GetIntTestCase(tests.BaseTestCase):
 
     def setUp(self):
-        self.item1 = ConfigurationItem('key1', 1)
-        self.item2 = ConfigurationItem('key2', '2')
-        self.config = MockConfig([self.item1, self.item2])
+        item1 = ConfigurationItem('key1', 1)
+        item2 = ConfigurationItem('key2', '2')
+        mock_config = MockConfig([item1, item2])
+        self.config = verzamelend.Configuration(mock_config)
 
     def test(self):
-        Config = verzamelend.Configuration(self.config)
-        self.assertEquals(Config.getInt('key1'), 1)
-        self.assertEquals(Config.getInt('key2'), 2)
+        self.assertEquals(self.config.getInt('key1'), 1)
+        self.assertEquals(self.config.getInt('key2'), 2)
 
 
 class GetStrTestCase(tests.BaseTestCase):
 
     def setUp(self):
-        self.item1 = ConfigurationItem('key1', 1)
-        self.item2 = ConfigurationItem('key2', '2')
-        self.config = MockConfig([self.item1, self.item2])
+        item1 = ConfigurationItem('key1', 1)
+        item2 = ConfigurationItem('key2', '2')
+        mock_config = MockConfig([item1, item2])
+        self.config = verzamelend.Configuration(mock_config)
 
     def test(self):
-        Config = verzamelend.Configuration(self.config)
-        self.assertEquals(Config.getStr('key1'), '1')
-        self.assertEquals(Config.getStr('key2'), '2')
+        self.assertEquals(self.config.getStr('key1'), '1')
+        self.assertEquals(self.config.getStr('key2'), '2')
+
+
+class GetValueTestCase(tests.BaseTestCase):
+
+    def setUp(self):
+        item1 = ConfigurationItem('key1', '1')
+        mock_config = MockConfig([item1])
+        self.config = verzamelend.Configuration(mock_config)
+
+    def test_none_parameter(self):
+        with pytest.raises(ValueError):
+            self.config.getValue(None)
