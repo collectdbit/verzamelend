@@ -19,4 +19,3 @@ class GetBoolTestCase(tests.BaseTestCase):
         self.item1 = ConfigurationItem('key1', True)
         self.item2 = ConfigurationItem('key2', False)
         self.config = MockConfig([self.item1, self.item2])
-
