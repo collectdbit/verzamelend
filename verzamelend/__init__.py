@@ -49,13 +49,13 @@ def register_callbacks(plugin):
 
     LOGGER.info('register_callbacks for plugin %s', plugin.name)
     collectd.register_config(plugin.configCallback)
-    collectd.register_flush(plugin.flushCallback())
-    collectd.register_init(plugin.initCallback())
-    collectd.register_log(plugin.logCallback())
-    collectd.register_notification(plugin.notificationCallback())
-    collectd.register_read(plugin.readCallback())
-    collectd.register_shutdown(plugin.shutdownCallback())
-    collectd.register_write(plugin.writeCallback())
+    collectd.register_flush(plugin.flushCallback)
+    collectd.register_init(plugin.initCallback)
+    collectd.register_log(plugin.logCallback)
+    collectd.register_notification(plugin.notificationCallback)
+    collectd.register_read(plugin.readCallback)
+    collectd.register_shutdown(plugin.shutdownCallback)
+    collectd.register_write(plugin.writeCallback)
 
 
 class Configuration(object):
