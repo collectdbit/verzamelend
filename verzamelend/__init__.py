@@ -133,12 +133,12 @@ class Configuration(object):
             Configuration.LOGGER.error(error_message)
             raise ValueError(error_message)
 
-        if position is None or position <= 0:
+        if position <= 0:
             error_message = 'getValue() position argument %s must be a positive integer!'
             Configuration.LOGGER.error(error_message, position)
             raise ValueError(error_message % position)
 
-        if position is None:
+        if position is not None:
             self.values[parameter][position - 1]
         else:
             return self.values[parameter]
