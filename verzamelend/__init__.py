@@ -74,7 +74,7 @@ class Configuration(object):
         """
         self.values = dict([(node.key, node.value) for node in config.children])
 
-    def getBool(self, parameter, position=1):
+    def getBool(self, parameter, position=None):
         """
         Returns the boolean value of the given parameter.
 
@@ -92,7 +92,7 @@ class Configuration(object):
         else:
             return False
 
-    def getInt(self, parameter, position=1):
+    def getInt(self, parameter, position=None):
         """
         Returns the integer value of the given parameter.
 
