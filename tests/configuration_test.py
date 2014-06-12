@@ -63,10 +63,25 @@ class GetStrTestCase(tests.BaseTestCase):
 class GetValueTestCase(tests.BaseTestCase):
 
     def setUp(self):
-        item1 = ConfigurationItem('key1', '1')
+        self.parameter = 'key1'
+        item1 = ConfigurationItem('key1', [1, 3])
         mock_config = MockConfig([item1])
         self.config = verzamelend.Configuration(mock_config)
 
-    def test_none_parameter(self):
+    def test_get_value_from_list(self):
+        self.assertEquals(1, self.config.getValue(self.parameter, 1))
+        self.assertEquals(3, self.config.getValue(self.parameter, 2))
+
+    def test_invalid_parameter(self):
         with pytest.raises(ValueError):
             self.config.getValue(None)
+
+        with pytest.raises(KeyError):
+            self.config.getValue('unknown')
+
+    def test_invalid_position(self):
+        with pytest.raises(ValueError):
+            self.config.getValue(parameter=self.parameter, position=-1)
+
+        with pytest.raises(IndexError):
+            self.config.getValue(parameter=self.parameter, position=3)
