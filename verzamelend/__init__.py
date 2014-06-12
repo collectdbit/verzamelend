@@ -103,7 +103,7 @@ class Configuration(object):
         """
         return int(self.getValue(parameter, position))
 
-    def getStr(self, parameter, position=1):
+    def getStr(self, parameter, position=None):
         """
         Returns the string value of the given parameter.
 
@@ -133,13 +133,13 @@ class Configuration(object):
             Configuration.LOGGER.error(error_message)
             raise ValueError(error_message)
 
-        if position <= 0:
-            error_message = 'getValue() position argument %s must be a positive integer!'
-            Configuration.LOGGER.error(error_message, position)
-            raise ValueError(error_message % position)
-
         if position is not None:
-            self.values[parameter][position - 1]
+            if position <= 0:
+                error_message = 'getValue() position argument %s must be a positive integer!'
+                Configuration.LOGGER.error(error_message, position)
+                raise ValueError(error_message % position)
+            else:
+                self.values[parameter][position - 1]
         else:
             return self.values[parameter]
 
