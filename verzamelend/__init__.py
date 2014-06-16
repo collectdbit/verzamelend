@@ -161,6 +161,7 @@ class Plugin(object):
         :type name: str
         """
         self.name = name
+        self.configuration = None
 
     @staticmethod
     def configCallback(config):
@@ -171,7 +172,7 @@ class Plugin(object):
         :type config: object (Config)
         """
         Plugin.LOGGER.info('configCallback()')
-        configuration = Configuration(config)
+        self.configuration = Configuration(config)
 
     @staticmethod
     def initCallback():
