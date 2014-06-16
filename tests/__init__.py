@@ -79,3 +79,18 @@ class BaseTestCase(unittest.TestCase, Basic):
         Tear down test resources.
         """
         self.logger.info('tearDown()')
+
+
+class MockConfig(object):
+    """
+    Mock object for the collectd configuration.
+    """
+
+    def __init__(self, children):
+        """
+        Initializes a MockConfig object.
+
+        :param children: list of configuration items.
+        :type children: list
+        """
+        self.children = children
