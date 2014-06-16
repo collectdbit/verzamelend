@@ -7,14 +7,10 @@ import verzamelend
 
 from collections import namedtuple
 
+from tests import MockConfig
+
 
 ConfigurationItem = namedtuple('ConfigurationItem', 'key value')
-
-
-class MockConfig(object):
-
-    def __init__(self, children):
-        self.children = children
 
 
 class GetBoolTestCase(tests.BaseTestCase):
