@@ -151,6 +151,7 @@ class Plugin(object):
     Class to build Collectd plugins.
     """
 
+    CONFIGURATION = {}
     LOGGER = None
 
     def __init__(self, name):
@@ -161,10 +162,9 @@ class Plugin(object):
         :type name: str
         """
         self.name = name
-        self.configuration = None
 
-    @staticmethod
-    def configCallback(config):
+    @classmethod
+    def configCallback(cls, config):
         """
         Plugin callback for the configuration event.
 
@@ -172,7 +172,7 @@ class Plugin(object):
         :type config: object (Config)
         """
         Plugin.LOGGER.info('configCallback()')
-        self.configuration = Configuration(config)
+        cls.CONFIGURATION = Configuration(config)
 
     @staticmethod
     def initCallback():
