@@ -171,7 +171,7 @@ class Plugin(object):
         :param config: the Collectd configuration for this plugin.
         :type config: object (Config)
         """
-        Plugin.LOGGER.info('configCallback()')
+        cls.LOGGER.info('configCallback()')
         cls.CONFIGURATION = Configuration(config)
 
     @staticmethod
