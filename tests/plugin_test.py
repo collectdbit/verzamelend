@@ -1,3 +1,5 @@
+import logging
+
 import mock
 
 import tests
@@ -68,3 +70,38 @@ class PluginTestCase(tests.BaseTestCase):
         verzamelend.Plugin.writeCallback(None, data=None)
 
         mock_logger.info.assert_called_once_with('writeCallback()')
+
+
+class TestPlugin(verzamelend.Plugin):
+    """
+    A test plugin implementation.
+    """
+
+    CONFIGURATION = {}
+    LOGGER = None
+    NAME = 'TestPlugin'
+
+    def __init__(self):
+        """
+        Constructs a Plugin instance.
+        """
+        super(TestPlugin, self).__init__(TestPlugin.NAME)
+
+TestPlugin.LOGGER = logging.getLogger(TestPlugin.__class__.__name__)
+
+
+class TestPluginTestCase(tests.BaseTestCase):
+    """
+    Test cases for the test plugin implementation.
+    """
+
+    def setUp(self):
+        item1 = ConfigurationItem('key1', True)
+        self.config = MockConfig([item1])
+
+    @mock.patch('__main__.TestPlugin.LOGGER')
+    def test_config_callback(self, mock_logger):
+        verzamelend.Plugin.configCallback(self.config)
+
+        mock_logger.info.assert_called_once_with('configCallback()')
+        self.assertEquals(TestPlugin.CONFIGURATION.values['key1'], True)
