@@ -8,7 +8,6 @@ from pip.req import parse_requirements
 
 from setuptools import find_packages, setup
 
-
 setup(name=verzamelend.__name__,
       version=verzamelend.__version__,
       description='Python verzamelend package.',
