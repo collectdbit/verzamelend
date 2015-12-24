@@ -2,7 +2,7 @@ import pytest
 
 import tests
 
-import verzamelend
+from collectdbit import verzamelend
 
 
 from collections import namedtuple

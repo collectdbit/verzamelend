@@ -1,5 +1,5 @@
 """
-.. module:: verzamelend.tests
+.. module:: collectdbit.verzamelend.tests
     :platform: Unix
     :synopsis:
 
@@ -8,12 +8,13 @@
 
 import os
 
-import verzamelend.config
-import verzamelend.logging
+import collectdbit.verzamelend.logging
 
 import logging
 
 import unittest
+
+from collectdbit.verzamelend import config
 
 
 LOGGING_CONFIG_FILE = '%s/tests/logging.conf' % os.curdir
@@ -32,10 +33,10 @@ class Basic(object):
         """
         logging.getLogger('%s.%s' % (__name__, 'Basic')).info('setup_configuration()')
 
-        verzamelend.config.reset()
-        verzamelend.config.load_configuration(PACKAGE_CONFIG_FILE)
+        config.reset()
+        config.load_configuration(PACKAGE_CONFIG_FILE)
 
-        self.configuration = verzamelend.config.get()
+        self.configuration = config.get()
 
     def setup_logger(self):
         """
@@ -43,8 +44,7 @@ class Basic(object):
         It will also load (once) the test logging configuration.
         """
         logging.getLogger('%s.%s' % (__name__, 'Basic')).info('setup_logger()')
-
-        verzamelend.logging.load_configuration(LOGGING_CONFIG_FILE)
+        collectdbit.verzamelend.logging.load_configuration(LOGGING_CONFIG_FILE)
 
         self.logger = logging.getLogger('%s.%s' % (__name__, self.__class__.__name__))
 

@@ -1,13 +1,12 @@
-import verzamelend.config
-
 import mock
 
 import pytest
 
 import unittest
 
+from collectdbit.verzamelend import config
 
-from verzamelend.config import DEFAULT_CONFIG_FILE, Cache
+from collectdbit.verzamelend.config import DEFAULT_CONFIG_FILE, Cache
 
 
 class LoadConfigurationTestCase(unittest.TestCase):
@@ -16,20 +15,20 @@ class LoadConfigurationTestCase(unittest.TestCase):
     """
 
     def setUp(self):
-        verzamelend.config.reset()
+        config.reset()
 
         # mock of logging.RootLogger
-        self.patch_get_logger = mock.patch('verzamelend.config.logging.getLogger', autospec=True)
+        self.patch_get_logger = mock.patch('collectdbit.verzamelend.config.logging.getLogger', autospec=True)
         self.mock_get_logger = self.patch_get_logger.start()
 
-        self.patch_root_logger = mock.patch('verzamelend.config.logging.RootLogger', autospec=True)
+        self.patch_root_logger = mock.patch('collectdbit.verzamelend.config.logging.RootLogger', autospec=True)
         self.mock_root_logger = self.patch_root_logger.start()
         self.mock_get_logger.return_value = self.mock_root_logger
 
         self.patch_path_exists = mock.patch('os.path', autospec=True)
         self.mock_path = self.patch_path_exists.start()
 
-        self.patch_config_read = mock.patch('verzamelend.config.ConfigParser.read')
+        self.patch_config_read = mock.patch('collectdbit.verzamelend.config.ConfigParser.read')
         self.mock_read = self.patch_config_read.start()
 
     def tearDown(self):
@@ -46,7 +45,7 @@ class LoadConfigurationTestCase(unittest.TestCase):
         self.mock_path.isfile.return_value = True
         self.mock_read.return_value = None
 
-        verzamelend.config.load_configuration()
+        config.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -65,7 +64,7 @@ class LoadConfigurationTestCase(unittest.TestCase):
         self.mock_read.return_value = None
 
         with pytest.raises(ValueError):
-            verzamelend.config.load_configuration()
+            config.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -85,7 +84,7 @@ class LoadConfigurationTestCase(unittest.TestCase):
         self.mock_read.side_effect = ValueError(123)
 
         with pytest.raises(ValueError):
-            verzamelend.config.load_configuration()
+            config.load_configuration()
 
         self.mock_path.exists.assert_called_once_with(DEFAULT_CONFIG_FILE)
         self.mock_path.isfile.assert_called_once_with(DEFAULT_CONFIG_FILE)
@@ -105,9 +104,9 @@ class GetTestCase(unittest.TestCase):
     """
 
     def setUp(self):
-        verzamelend.config.reset()
+        config.reset()
 
-    @mock.patch('verzamelend.config.load_configuration', autospec=True)
+    @mock.patch('collectdbit.verzamelend.config.load_configuration', autospec=True)
     def test(self, mock_load):
         """
         Tests verzamelend.config.get() when no settings have been loaded.
@@ -115,18 +114,18 @@ class GetTestCase(unittest.TestCase):
         default = {'key1': 'value1'}
         mock_load.return_value = default
 
-        self.assertEquals(default, verzamelend.config.get())
+        self.assertEquals(default, config.get())
         mock_load.assert_called_once_with()
 
-    @mock.patch('verzamelend.config.load_configuration', autospec=True)
+    @mock.patch('collectdbit.verzamelend.config.load_configuration', autospec=True)
     def test_with_preloaded_settings(self, mock_load):
         """
         Tests verzamelend.config.get() when settings have been loaded.
         """
         default = {'key2': 'value2'}
-        Cache.SETTINGS = default
+        Cache.settings = default
 
-        self.assertEquals(default, verzamelend.config.get())
+        self.assertEquals(default, config.get())
         self.assertFalse(mock_load.called)
 
 
@@ -136,15 +135,15 @@ class ResetTestCase(unittest.TestCase):
     """
 
     def setUp(self):
-        verzamelend.config.reset()
+        config.reset()
 
     def test(self):
         """
         Tests verzamelend.config.reset().
         """
         default = {'key2': 'value2'}
-        Cache.SETTINGS = default
+        Cache.settings = default
 
-        self.assertEquals(default, verzamelend.config.get())
-        self.assertTrue(verzamelend.config.reset() is None)
-        self.assertTrue(Cache.SETTINGS is None)
+        self.assertEquals(default, config.get())
+        self.assertTrue(config.reset() is None)
+        self.assertTrue(Cache.settings is None)

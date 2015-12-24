@@ -1,5 +1,5 @@
 """
-.. module:: verzamelend
+.. module:: collectdbit.verzamelend
     :platform: Unix
     :synopsis: Verzamelend package.
 
@@ -14,7 +14,7 @@ import collectd
 
 import logging
 
-from verzamelend.version import __version__
+from .version import __version__
 
 
 LOGGER = logging.getLogger(__name__)
@@ -150,9 +150,6 @@ class Plugin(object):
     """
     Class to build Collectd plugins.
     """
-
-    CONFIGURATION = {}
-    LOGGER = None
 
     def __init__(self, name):
         """

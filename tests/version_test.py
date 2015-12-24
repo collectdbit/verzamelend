@@ -10,7 +10,7 @@ class VersionTestCase(unittest.TestCase):
         """
         Tests the version module attributes.
         """
-        from verzamelend import version
+        from collectdbit.verzamelend import version
 
         self.assertFalse(version.__dict__ is None)
         self.assertTrue('__version__' in version.__dict__)

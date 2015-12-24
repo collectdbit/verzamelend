@@ -4,15 +4,15 @@ import pytest
 
 import tests
 
-import verzamelend
+from collectdbit import verzamelend
 
 
 class RegisterCallbacksTestCase(tests.BaseTestCase):
 
-    @mock.patch('verzamelend.collectd')
+    @mock.patch('collectdbit.verzamelend.collectd')
     def test(self, mock_collectd):
         """
-        Test verzamelend.register_callbacks().
+        Test collectdbit.verzamelend.register_callbacks().
         """
         plugin = verzamelend.Plugin('test')
         verzamelend.register_callbacks(plugin)
@@ -28,7 +28,7 @@ class RegisterCallbacksTestCase(tests.BaseTestCase):
 
     def test_none_plugin(self):
         """
-        Test verzamelend.register_callbacks() when a None argument is passed.
+        Test collectdbit.verzamelend.register_callbacks() when a None argument is passed.
         """
         with pytest.raises(ValueError):
             verzamelend.register_callbacks(None)

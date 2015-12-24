@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from collectdbit import verzamelend
+import pip.download
 
+
+from collectdbit import verzamelend
 
 from pip.req import parse_requirements
 
@@ -15,8 +17,13 @@ setup(name=verzamelend.__name__,
       author_email='steenzout@ymail.com',
       maintainer='Pedro Salgado',
       maintainer_email='steenzout@ymail.com',
-      url='https://github.com/steenzout/verzamelend',
+      url='https://github.com/collectdbit/verzamelend',
       namespace_packages=('collectdbit',),
       packages=find_packages(exclude=('*.tests', '*.tests.*', 'tests.*', 'tests', 'collectdbit')),
-      install_requires=[str(pkg.req) for pkg in parse_requirements('requirements.txt')],
-      tests_require=[str(pkg.req) for pkg in parse_requirements('test-requirements.txt')],)
+      install_requires=[
+            str(pkg.req) for pkg in parse_requirements(
+                    'requirements.txt', session=pip.download.PipSession())],
+      tests_require=[
+            str(pkg.req) for pkg in parse_requirements(
+                    'test-requirements.txt', session=pip.download.PipSession())],)
+

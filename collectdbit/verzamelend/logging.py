@@ -15,7 +15,7 @@ import logging.config as config
 import os
 
 
-DEFAULT_CONFIG_FILE = '/etc/vermazelend/logging.conf'
+DEFAULT_CONFIG_FILE = '/etc/collectdbit/logging.conf'
 
 
 def load_configuration(config_file=DEFAULT_CONFIG_FILE):
